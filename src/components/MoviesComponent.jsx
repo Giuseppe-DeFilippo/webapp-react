@@ -29,7 +29,7 @@ export default function MainComponent() {
                     <div>non ci sono film</div>
                 ) : (
                     movies.map((movie) => (
-                        <div className="col-12 col-md-4 cardPersonal" key={movie.id} onClick={() => navigate(`/pag2/${movie.id}`)} style={{ cursor: "pointer" }}>
+                        <div className="col-12 col-sm-6 col-md-6 col-lg-4  cardPersonal" key={movie.id} onClick={() => navigate(`/pag2/${movie.id}`)} style={{ cursor: "pointer" }}>
                             <CardComponent
                                 image={`http://localhost:3000${movie.image}`}
                                 title={movie.title}
