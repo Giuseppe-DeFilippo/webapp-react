@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import DefaultLayoutComponent from './components/DefaultLayoutComponent'
 import { GlobalProvider } from './GlobalContext/GlobalContext'
 import MainComponent from './components/mainComponent'
+import SingoloFilm from './pages/SingoloFilm'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route element={<DefaultLayoutComponent />}>
             <Route path="/" element={<MainComponent />} />
-            <Route path="/pag2" element={<h1>Seconda Pagina</h1>} />
+            <Route path="/pag2/:id" element={<SingoloFilm />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,8 +1,10 @@
 import CardComponent from "./CardComponent";
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 export default function MainComponent() {
     const [movies, setMovies] = useState([]) //si memorizzano i dati
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:3000/api/movie")
@@ -26,7 +28,7 @@ export default function MainComponent() {
                     <div>non ci sono film</div>
                 ) : (
                     movies.map((movie) => (
-                        <div className="col-12 col-md-4" key={movie.id}>
+                        <div className="col-12 col-md-4" key={movie.id} onClick={() => navigate(`/pag2/${movie.id}`)} style={{ cursor: "pointer" }}>
                             <CardComponent
                                 image={`http://localhost:3000${movie.image}`}
                                 title={movie.title}
