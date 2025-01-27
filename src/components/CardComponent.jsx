@@ -3,7 +3,7 @@ export default function CardComponent({ title, director, genre, year, abstract, 
         <div className="card" style={{ width: "18rem" }}>
             <img src={image} className="card-img-top" alt={title} />
             <div className="card-body">
-                <h5 className="card-title  d-none d-md-block">{title}</h5>
+                <h5 className="card-title  ">{title}</h5>
                 <p className="card-text  d-none d-sm-block">Director: {director}</p>
                 <p className="card-text  d-none d-sm-block">Genre: {genre}</p>
                 <p className="card-text  d-none d-sm-block">Release: {year}</p>
