@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import 'font-awesome/css/font-awesome.min.css';
 
 export default function SingoloFilm() {
     const { id } = useParams();
@@ -20,6 +21,23 @@ export default function SingoloFilm() {
                 console.error("errore mella query", error)
             })
     }, [id]);
+
+
+    //stelle
+    const renderStars = (vote) => {
+        const fullStars = Math.floor(vote);
+        const emptyStars = 5 - fullStars
+        let stars = [];
+        for (let i = 0; i < fullStars; i++) {
+            stars.push(<i key={`full-${i}`} className="fa fa-heart text-danger"></i>);
+        }
+        for (let i = 0; i < emptyStars; i++) {
+            stars.push(<i key={`empty-${i}`} className="fa fa-heart-o text-mutedò"></i>);
+        }
+
+        return stars
+    }
+
 
     if (!movie) return <p>non va</p>;
     const imageUrl = `http://localhost:3000${movie.image}`
@@ -43,9 +61,10 @@ export default function SingoloFilm() {
                     <p>0 recensioni</p>
                 ) : (
                     reviews.map((review) => (
-                        <div key={review.id} className="border p-3 mb-3">
+                        <div key={review.id} className="bg-white rounded shadow p-3 mb-3">
                             <h5>{review.name}</h5>
-                            <p>Voto: {review.vote}/5</p>
+                            <p>Voto: {renderStars(review.vote)}</p>
+                            {/* <span className=""> {renderStars(review.vote)} </span> */}
                             <p>{review.text}</p>
                         </div>
                     ))
