@@ -8,26 +8,41 @@ export default function FormComponent({ movieId }) {
         vote: "",
         text: "",
     });
-    //gestisce i cambiamenti nei campi di input
+    const [error, setError] = useState("");
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInput((prevInput) => ({
             ...prevInput,
             [name]: value,
         }));
+        setError("");
+    };
 
+    const validateForm = () => {
+        if (!input.name || !input.vote || !input.text) {
+            setError("Tutti i campi sono obbligatori!");
+            return false;
+        }
+        return true;
     };
 
     const handleSubmit = (e) => {
-        // e.preventDefault(); //evita il refresh della pagina
+        // e.preventDefault(); 
+
+        if (!validateForm()) {
+            return;
+        }
         axios.post(`http://localhost:3000/api/movie/${movieId}/reviews`, input)
             .then((response) => {
                 setInput({ name: "", vote: "", text: "" });
+                console.log("Recensione aggiunta:", response.data);
             })
             .catch((error) => {
-                console.error("errore", error);
-            })
-    }
+                console.error("Errore nella richiesta:", error);
+            });
+    };
+
 
     return (
 
