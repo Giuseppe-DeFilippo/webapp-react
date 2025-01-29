@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import 'font-awesome/css/font-awesome.min.css';
-
+import FormComponent from "../components/FormComponent";
 export default function SingoloFilm() {
     const { id } = useParams();
     const [movie, setMovie] = useState();
@@ -70,6 +70,7 @@ export default function SingoloFilm() {
                     ))
                 )}
             </div>
+            <FormComponent movieId={id} />
         </div>
     );
 

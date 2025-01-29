@@ -23,7 +23,6 @@ export default function MainComponent() {
 
     return (
         <div className="container ">
-            {/* Row per i film */}
             <div className="row">
                 {movies.length === 0 ? (
                     <div>non ci sono film</div>
